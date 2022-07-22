@@ -11,6 +11,7 @@ defmodule App.Blog.Post do
     field :tags, {:array, :string}
     field :title, :string
     belongs_to :user, App.Accounts.User
+    has_many :comments, App.Blog.Comment
 
     timestamps()
   end
