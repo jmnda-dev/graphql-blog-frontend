@@ -20,6 +20,8 @@ defmodule AppWeb.Router do
     get "/", PageController, :index
   end
 
+  use Kaffy.Routes, scope: "/admin"
+
   # Other scopes may use custom stacks.
   # scope "/api", AppWeb do
   #   pipe_through :api

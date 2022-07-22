@@ -17,6 +17,11 @@ config :app, AppWeb.Endpoint,
   pubsub_server: App.PubSub,
   live_view: [signing_salt: "o2U174dj"]
 
+config :kaffy,
+  otp_app: :app,
+  ecto_repo: App.Repo,
+  router: AppWeb.Router
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
