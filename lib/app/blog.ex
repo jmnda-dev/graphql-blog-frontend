@@ -6,7 +6,7 @@ defmodule App.Blog do
   import Ecto.Query, warn: false
   alias App.Repo
 
-  alias App.Blog.Post
+  alias App.Blog.{Post, Post.Query}
 
   @doc """
   Returns the list of posts.
@@ -18,7 +18,8 @@ defmodule App.Blog do
 
   """
   def list_posts do
-    Repo.all(Post)
+    query = Query.published_posts()
+    Repo.all(query)
   end
 
   @doc """
@@ -36,7 +37,8 @@ defmodule App.Blog do
 
   """
   def get_post(slug) do
-    Repo.get_by(Post, slug: slug) |> Repo.preload(comments: [:user])
+    query = Query.published_posts()
+    Repo.get_by(query, slug: slug)
   end
 
   @doc """
