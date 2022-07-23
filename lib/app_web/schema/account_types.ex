@@ -6,8 +6,16 @@ defmodule AppWeb.Schema.AccountTypes do
   @desc "A user of the blog"
   object :user do
     field :id, :id
+    field :first_name, :string
+    field :last_name, :string
+    field :username, :string
     field :email, :string
     field :posts, list_of(:post), resolve: dataloader(Accounts)
     field :comments, list_of(:comment), resolve: dataloader(Accounts)
+  end
+
+  object :session do
+    field :user, :user
+    field :token, :string
   end
 end

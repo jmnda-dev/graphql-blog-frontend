@@ -51,6 +51,16 @@ defmodule AppWeb.Schema do
       arg(:id, non_null(:id))
       resolve(&Resolvers.Blog.delete_post_comment/3)
     end
+
+    @desc "Create a user account"
+    field :signup, :session do
+      arg(:first_name, non_null(:string))
+      arg(:last_name, non_null(:string))
+      arg(:username, :string)
+      arg(:email, non_null(:string))
+      arg(:password, non_null(:string))
+      resolve(&Resolvers.Accounts.signup/3)
+    end
   end
 
   def context(ctx) do
