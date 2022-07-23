@@ -6,6 +6,7 @@ defmodule App.Blog do
   import Ecto.Query, warn: false
   alias App.Repo
 
+  alias App.Accounts.User
   alias App.Blog.{Post, Post.Query}
 
   @doc """
@@ -149,9 +150,10 @@ defmodule App.Blog do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_comment(attrs \\ %{}) do
+  def create_comment(%User{} = user, attrs \\ %{}) do
     %Comment{}
     |> Comment.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:user, user)
     |> Repo.insert()
   end
 
