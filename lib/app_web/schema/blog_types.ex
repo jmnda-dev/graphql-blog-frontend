@@ -20,7 +20,7 @@ defmodule AppWeb.Schema.BlogTypes do
   object :comment do
     field :id, :id
     field :comment, :string
-    field :post, :post
-    field :user, :user
+    field :post, :post, resolve: dataloader(Blog)
+    field :user, :user, resolve: dataloader(Blog)
   end
 end
