@@ -42,7 +42,7 @@ defmodule AppWeb.Resolvers.Blog do
       ) do
     case Blog.get_comment(id) do
       nil ->
-        {:error, "Post with id '#{id}' not found"}
+        {:error, "Comment with id '#{id}' not found"}
 
       comment ->
         if allow_mutation?(comment.user_id, user.id) do
@@ -68,7 +68,7 @@ defmodule AppWeb.Resolvers.Blog do
       ) do
     case Blog.get_comment(id) do
       nil ->
-        {:error, "Post with id '#{id}' not found"}
+        {:error, "Comment with id '#{id}' not found"}
 
       comment ->
         if allow_mutation?(comment.user_id, user.id) do
