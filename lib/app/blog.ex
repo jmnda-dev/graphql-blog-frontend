@@ -35,7 +35,9 @@ defmodule App.Blog do
       nil
 
   """
-  def get_post(slug), do: Repo.get_by(Post, slug: slug)
+  def get_post(slug) do
+    Repo.get_by(Post, slug: slug) |> Repo.preload(:comments)
+  end
 
   @doc """
   Creates a post.
