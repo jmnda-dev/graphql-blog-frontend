@@ -15,7 +15,7 @@ defmodule App.Blog.Comment do
     comment
     |> cast(attrs, [:comment, :post_id])
     |> validate_required([:comment])
-    |> validate_length(:comment, max: 500)
+    |> validate_length(:comment, min: 2, max: 500)
     |> assoc_constraint(:post)
   end
 end

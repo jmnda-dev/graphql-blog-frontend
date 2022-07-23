@@ -37,6 +37,14 @@ defmodule AppWeb.Schema do
       arg(:comment, non_null(:string))
       resolve(&Resolvers.Blog.create_post_comment/3)
     end
+
+    @desc "Update a post comment"
+    field :update_comment, :comment do
+      arg(:id, non_null(:id))
+      arg(:post_id, non_null(:id))
+      arg(:comment, non_null(:string))
+      resolve(&Resolvers.Blog.update_post_comment/3)
+    end
   end
 
   def context(ctx) do
