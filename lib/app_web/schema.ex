@@ -30,6 +30,15 @@ defmodule AppWeb.Schema do
     end
   end
 
+  mutation do
+    @desc "Creates a comment for a post"
+    field :create_comment, :comment do
+      arg(:post_id, non_null(:id))
+      arg(:comment, non_null(:string))
+      resolve(&Resolvers.Blog.create_post_comment/3)
+    end
+  end
+
   def context(ctx) do
     loader =
       Dataloader.new()
