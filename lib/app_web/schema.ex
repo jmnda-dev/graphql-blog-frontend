@@ -12,6 +12,12 @@ defmodule AppWeb.Schema do
       resolve(&Resolvers.Blog.list_posts/3)
     end
 
+    @desc "Get a post by slug"
+    field :post, :post do
+      arg(:slug, non_null(:string))
+      resolve(&Resolvers.Blog.get_post_by_slug/3)
+    end
+
     @desc "Get a user"
     field :user, :user do
       arg(:id, non_null(:id))
