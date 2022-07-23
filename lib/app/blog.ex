@@ -22,20 +22,20 @@ defmodule App.Blog do
   end
 
   @doc """
-  Gets a single post.
+  Gets a single post by its slug.
 
-  Raises `Ecto.NoResultsError` if the Post does not exist.
+  Returns `nil` if the Post does not exist.
 
   ## Examples
 
-      iex> get_post!(123)
+      iex> get_post("my-post")
       %Post{}
 
-      iex> get_post!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_post("post-does-not-exist")
+      nil
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
+  def get_post(slug), do: Repo.get_by(Post, slug: slug)
 
   @doc """
   Creates a post.
