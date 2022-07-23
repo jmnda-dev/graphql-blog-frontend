@@ -59,7 +59,7 @@ defmodule App.Accounts do
       nil
 
   """
-  def get_user(id), do: Repo.get(User, id) |> Repo.preload(:posts, limit: 3)
+  def get_user(id), do: Repo.get(User, id)
 
   ## User registration
 
