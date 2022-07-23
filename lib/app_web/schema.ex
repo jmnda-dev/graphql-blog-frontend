@@ -27,6 +27,11 @@ defmodule AppWeb.Schema do
       resolve(&Resolvers.Accounts.find_user/3)
     end
 
+    @desc "Get the currently signed in user"
+    field :me, :user do
+      resolve(&Resolvers.Accounts.me/3)
+    end
+
     field :comments, list_of(:comment) do
       resolve(&Resolvers.Blog.list_comments/3)
     end

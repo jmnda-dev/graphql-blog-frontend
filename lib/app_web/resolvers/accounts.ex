@@ -33,4 +33,12 @@ defmodule AppWeb.Resolvers.Accounts do
         {:error, "Invalid email or password"}
     end
   end
+
+  def me(_parent, _, %{context: %{current_user: user}}) do
+    {:ok, user}
+  end
+
+  def me(_, _, _) do
+    {:ok, nil}
+  end
 end
