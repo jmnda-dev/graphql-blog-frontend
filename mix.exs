@@ -51,7 +51,8 @@ defmodule App.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:kaffy, "~> 0.9.1"},
       {:absinthe, "~> 1.7", overide: true},
-      {:absinthe_plug, "~> 1.5"}
+      {:absinthe_plug, "~> 1.5"},
+      {:dataloader, "~> 1.0"}
     ]
   end
 
