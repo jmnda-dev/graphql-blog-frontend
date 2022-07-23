@@ -15,6 +15,7 @@ defmodule AppWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug AppWeb.Plugs.SetCurrentUser
   end
 
   scope "/api" do
