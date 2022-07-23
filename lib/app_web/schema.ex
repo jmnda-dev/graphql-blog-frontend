@@ -71,9 +71,6 @@ defmodule AppWeb.Schema do
   end
 
   def context(ctx) do
-    current_user = Accounts.get_user(2)
-    ctx = Map.put(ctx, :current_user, current_user)
-
     loader =
       Dataloader.new()
       |> Dataloader.add_source(Blog, Blog.datasource())
