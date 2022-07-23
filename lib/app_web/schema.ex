@@ -6,6 +6,7 @@ defmodule AppWeb.Schema do
 
   alias AppWeb.Resolvers
   alias App.{Accounts, Blog}
+  alias AppWeb.Middleware.Authenticate
 
   query do
     @desc "Get all posts"
@@ -22,6 +23,7 @@ defmodule AppWeb.Schema do
     @desc "Get a user"
     field :user, :user do
       arg(:id, non_null(:id))
+      middleware(Authenticate)
       resolve(&Resolvers.Accounts.find_user/3)
     end
 
@@ -35,6 +37,7 @@ defmodule AppWeb.Schema do
     field :create_comment, :comment do
       arg(:post_id, non_null(:id))
       arg(:comment, non_null(:string))
+      middleware(Authenticate)
       resolve(&Resolvers.Blog.create_post_comment/3)
     end
 
@@ -43,12 +46,14 @@ defmodule AppWeb.Schema do
       arg(:id, non_null(:id))
       arg(:post_id, non_null(:id))
       arg(:comment, non_null(:string))
+      middleware(Authenticate)
       resolve(&Resolvers.Blog.update_post_comment/3)
     end
 
     @desc "Delete a post comment"
     field :delete_comment, :comment do
       arg(:id, non_null(:id))
+      middleware(Authenticate)
       resolve(&Resolvers.Blog.delete_post_comment/3)
     end
 
@@ -59,6 +64,7 @@ defmodule AppWeb.Schema do
       arg(:username, :string)
       arg(:email, non_null(:string))
       arg(:password, non_null(:string))
+
       resolve(&Resolvers.Accounts.signup/3)
     end
 
