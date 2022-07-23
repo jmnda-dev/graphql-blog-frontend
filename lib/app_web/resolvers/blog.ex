@@ -61,6 +61,32 @@ defmodule AppWeb.Resolvers.Blog do
     end
   end
 
+  def delete_post_comment(
+        _parent,
+        %{id: id},
+        %{context: %{current_user: user}}
+      ) do
+    case Blog.get_comment(id) do
+      nil ->
+        {:error, "Post with id '#{id}' not found"}
+
+      comment ->
+        if allow_mutation?(comment.user_id, user.id) do
+          case Blog.delete_comment(comment) do
+            {:error, changeset} ->
+              {:error,
+               message: "Could not delete comment",
+               details: ChangesetErrors.error_details(changeset)}
+
+            {:ok, comment} ->
+              {:ok, comment}
+          end
+        else
+          {:error, "You are not allowed to delete this comment"}
+        end
+    end
+  end
+
   defp allow_mutation?(comment_user_id, user_id) do
     if comment_user_id == user_id do
       true

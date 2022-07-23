@@ -45,9 +45,18 @@ defmodule AppWeb.Schema do
       arg(:comment, non_null(:string))
       resolve(&Resolvers.Blog.update_post_comment/3)
     end
+
+    @desc "Delete a post comment"
+    field :delete_comment, :comment do
+      arg(:id, non_null(:id))
+      resolve(&Resolvers.Blog.delete_post_comment/3)
+    end
   end
 
   def context(ctx) do
+    current_user = Accounts.get_user(2)
+    ctx = Map.put(ctx, :current_user, current_user)
+
     loader =
       Dataloader.new()
       |> Dataloader.add_source(Blog, Blog.datasource())
