@@ -81,6 +81,17 @@ defmodule App.Accounts do
     |> Repo.insert()
   end
 
+  def authenticate(email, password) do
+    user = get_user_by_email(email)
+
+    with %{hashed_password: hashed_password} <- user,
+         true <- Bcrypt.verify_pass(password, hashed_password) do
+      {:ok, user}
+    else
+      _ -> :error
+    end
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking user changes.
 

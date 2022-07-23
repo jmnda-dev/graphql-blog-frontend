@@ -61,6 +61,13 @@ defmodule AppWeb.Schema do
       arg(:password, non_null(:string))
       resolve(&Resolvers.Accounts.signup/3)
     end
+
+    @desc "Signin a user"
+    field :signin, :session do
+      arg(:email, non_null(:string))
+      arg(:password, non_null(:string))
+      resolve(&Resolvers.Accounts.signin/3)
+    end
   end
 
   def context(ctx) do

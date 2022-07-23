@@ -23,4 +23,14 @@ defmodule AppWeb.Resolvers.Accounts do
         {:ok, %{user: user, token: AuthToken.sign(user)}}
     end
   end
+
+  def signin(_, %{email: email, password: password}, _) do
+    case Accounts.authenticate(email, password) do
+      {:ok, user} ->
+        {:ok, %{user: user, token: AuthToken.sign(user)}}
+
+      :error ->
+        {:error, "Invalid email or password"}
+    end
+  end
 end
