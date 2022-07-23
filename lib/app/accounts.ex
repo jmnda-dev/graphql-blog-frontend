@@ -351,4 +351,12 @@ defmodule App.Accounts do
       {:error, :user, changeset, _} -> {:error, changeset}
     end
   end
+
+  def datasource do
+    Dataloader.Ecto.new(App.Repo, query: &query/2)
+  end
+
+  def query(queryable, _) do
+    queryable
+  end
 end

@@ -5,6 +5,7 @@ defmodule AppWeb.Schema do
   import_types(AppWeb.Schema.AccountTypes)
 
   alias AppWeb.Resolvers
+  alias App.{Accounts, Blog}
 
   query do
     @desc "Get all posts"
@@ -30,12 +31,10 @@ defmodule AppWeb.Schema do
   end
 
   def context(ctx) do
-    source = Dataloader.Ecto.new(App.Repo)
-
     loader =
       Dataloader.new()
-      |> Dataloader.add_source(App.Blog, source)
-      |> Dataloader.add_source(App.Accounts, source)
+      |> Dataloader.add_source(Blog, Blog.datasource())
+      |> Dataloader.add_source(Accounts, Accounts.datasource())
 
     Map.put(ctx, :loader, loader)
   end
