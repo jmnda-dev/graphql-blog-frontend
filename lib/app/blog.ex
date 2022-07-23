@@ -6,7 +6,8 @@ defmodule App.Blog do
   import Ecto.Query, warn: false
   alias App.Repo
 
-  alias App.Blog.Post
+  alias App.Accounts.User
+  alias App.Blog.{Post, Post.Query}
 
   @doc """
   Returns the list of posts.
@@ -18,24 +19,28 @@ defmodule App.Blog do
 
   """
   def list_posts do
-    Repo.all(Post)
+    query = Query.published_posts()
+    Repo.all(query)
   end
 
   @doc """
-  Gets a single post.
+  Gets a single post by its slug.
 
-  Raises `Ecto.NoResultsError` if the Post does not exist.
+  Returns `nil` if the Post does not exist.
 
   ## Examples
 
-      iex> get_post!(123)
+      iex> get_post("my-post")
       %Post{}
 
-      iex> get_post!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_post("post-does-not-exist")
+      nil
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
+  def get_post(slug) do
+    query = Query.published_posts()
+    Repo.get_by(query, slug: slug)
+  end
 
   @doc """
   Creates a post.
@@ -131,7 +136,7 @@ defmodule App.Blog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_comment!(id), do: Repo.get!(Comment, id)
+  def get_comment(id), do: Repo.get(Comment, id)
 
   @doc """
   Creates a comment.
@@ -145,9 +150,10 @@ defmodule App.Blog do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_comment(attrs \\ %{}) do
+  def create_comment(%User{} = user, attrs \\ %{}) do
     %Comment{}
     |> Comment.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:user, user)
     |> Repo.insert()
   end
 
@@ -196,5 +202,18 @@ defmodule App.Blog do
   """
   def change_comment(%Comment{} = comment, attrs \\ %{}) do
     Comment.changeset(comment, attrs)
+  end
+
+  def datasource do
+    Dataloader.Ecto.new(App.Repo, query: &query/2)
+  end
+
+  def query(Post, _args) do
+    Post
+    |> where(published: true)
+  end
+
+  def query(queryable, _) do
+    queryable
   end
 end

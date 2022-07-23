@@ -47,18 +47,19 @@ defmodule App.Accounts do
   @doc """
   Gets a single user.
 
-  Raises `Ecto.NoResultsError` if the User does not exist.
+  Returns `{:ok, user}` if the User exists and `nil` if the
+  user does not exist.
 
   ## Examples
 
-      iex> get_user!(123)
+      iex> get_user(123)
       %User{}
 
-      iex> get_user!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_user(456)
+      nil
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user(id), do: Repo.get(User, id)
 
   ## User registration
 
@@ -78,6 +79,17 @@ defmodule App.Accounts do
     %User{}
     |> User.registration_changeset(attrs)
     |> Repo.insert()
+  end
+
+  def authenticate(email, password) do
+    user = get_user_by_email(email)
+
+    with %{hashed_password: hashed_password} <- user,
+         true <- Bcrypt.verify_pass(password, hashed_password) do
+      {:ok, user}
+    else
+      _ -> :error
+    end
   end
 
   @doc """
@@ -349,5 +361,13 @@ defmodule App.Accounts do
       {:ok, %{user: user}} -> {:ok, user}
       {:error, :user, changeset, _} -> {:error, changeset}
     end
+  end
+
+  def datasource do
+    Dataloader.Ecto.new(App.Repo, query: &query/2)
+  end
+
+  def query(queryable, _) do
+    queryable
   end
 end

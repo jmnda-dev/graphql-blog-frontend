@@ -37,6 +37,7 @@ defmodule App.Accounts.User do
     user
     |> cast(attrs, [:first_name, :last_name, :username, :email, :password])
     |> validate_required([:first_name, :last_name])
+    |> unique_constraint(:email)
     |> validate_email()
     |> validate_password(opts)
   end

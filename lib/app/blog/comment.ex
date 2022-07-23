@@ -13,7 +13,9 @@ defmodule App.Blog.Comment do
   @doc false
   def changeset(comment, attrs) do
     comment
-    |> cast(attrs, [:comment])
+    |> cast(attrs, [:comment, :post_id])
     |> validate_required([:comment])
+    |> validate_length(:comment, min: 2, max: 500)
+    |> assoc_constraint(:post)
   end
 end

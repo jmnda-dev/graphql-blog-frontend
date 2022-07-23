@@ -49,7 +49,10 @@ defmodule App.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:kaffy, "~> 0.9.1"}
+      {:kaffy, "~> 0.9.1"},
+      {:absinthe, "~> 1.7", overide: true},
+      {:absinthe_plug, "~> 1.5"},
+      {:dataloader, "~> 1.0"}
     ]
   end
 
