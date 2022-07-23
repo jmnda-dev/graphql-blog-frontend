@@ -1,5 +1,7 @@
 defmodule AppWeb.Schema.BlogTypes do
   use Absinthe.Schema.Notation
+  import Absinthe.Resolution.Helpers, only: [dataloader: 1]
+  alias App.{Blog}
 
   object :post do
     field :id, :id
@@ -9,8 +11,10 @@ defmodule AppWeb.Schema.BlogTypes do
     field :featured_image, :string
     field :content, :string
     field :published, :boolean
-    field :comments, list_of(:comment)
-    field :user, :user
+
+    field :comments, list_of(:comment), resolve: dataloader(Blog)
+
+    field :user, :user, resolve: dataloader(Blog)
   end
 
   object :comment do
