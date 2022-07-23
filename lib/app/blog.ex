@@ -36,7 +36,7 @@ defmodule App.Blog do
 
   """
   def get_post(slug) do
-    Repo.get_by(Post, slug: slug) |> Repo.preload(:comments)
+    Repo.get_by(Post, slug: slug) |> Repo.preload(comments: [:user])
   end
 
   @doc """
