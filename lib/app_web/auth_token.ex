@@ -11,11 +11,11 @@ defmodule AppWeb.AuthToken do
       AppWeb.Endpoint,
       @user_signing_salt,
       %{
-        id: user[:id],
-        username: user[:username],
-        email: user[:email],
-        first_name: user[:first_name],
-        last_name: user[:last_name]
+        id: Map.get(user, :id),
+        username: Map.get(user, :username),
+        email: Map.get(user, :email),
+        first_name: Map.get(user, :first_name),
+        last_name: Map.get(user, :last_name)
       }
     )
   end
