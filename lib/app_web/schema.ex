@@ -28,4 +28,19 @@ defmodule AppWeb.Schema do
       resolve(&Resolvers.Blog.list_comments/3)
     end
   end
+
+  def context(ctx) do
+    source = Dataloader.Ecto.new(App.Repo)
+
+    loader =
+      Dataloader.new()
+      |> Dataloader.add_source(App.Blog, source)
+      |> Dataloader.add_source(App.Accounts, source)
+
+    Map.put(ctx, :loader, loader)
+  end
+
+  def plugins do
+    [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
+  end
 end
