@@ -9,6 +9,7 @@ defmodule App.Blog.PostAdmin do
 
   def form_fields(_) do
     [
+      slug: %{create: :readonly, update: :readonly},
       title: %{type: nil},
       excerpt: nil,
       content: %{type: :richtext},

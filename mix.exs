@@ -53,7 +53,8 @@ defmodule App.MixProject do
       {:absinthe_plug, "~> 1.5"},
       {:dataloader, "~> 1.0"},
       {:kaffy,
-       git: "https://github.com/jmnda-dev/kaffy/", ref: "ec4f2efaf56802bf853a4159c2a00bbb843f218b"}
+       git: "https://github.com/jmnda-dev/kaffy/", ref: "ec4f2efaf56802bf853a4159c2a00bbb843f218b"},
+      {:slugy, "~> 4.1"}
     ]
   end
 

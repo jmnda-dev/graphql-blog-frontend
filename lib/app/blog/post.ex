@@ -20,6 +20,7 @@ defmodule App.Blog.Post do
   def changeset(post, attrs) do
     post
     |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published])
-    |> validate_required([:slug, :title, :excerpt, :featured_image, :content, :published])
+    |> Slugy.slugify([:title])
+    |> validate_required([:title, :excerpt, :featured_image, :content, :published])
   end
 end
