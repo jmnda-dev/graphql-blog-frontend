@@ -13,6 +13,10 @@ defmodule AppWeb.Router do
     plug :fetch_current_user
   end
 
+  pipeline :kaffy_authenticate do
+    plug :fetch_current_user
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
     plug AppWeb.Plugs.SetCurrentUser
@@ -32,7 +36,9 @@ defmodule AppWeb.Router do
     get "/", PageController, :index
   end
 
-  use Kaffy.Routes, scope: "/admin"
+  use Kaffy.Routes,
+    scope: "/admin",
+    pipe_through: [:kaffy_authenticate, :require_authenticated_user]
 
   # Other scopes may use custom stacks.
   # scope "/api", AppWeb do
