@@ -11,7 +11,6 @@ defmodule AppWeb.Schema.AccountTypes do
     field :username, :string
     field :email, :string
     field :posts, list_of(:post), resolve: dataloader(Accounts)
-    field :comments, list_of(:comment), resolve: dataloader(Accounts)
   end
 
   object :session do

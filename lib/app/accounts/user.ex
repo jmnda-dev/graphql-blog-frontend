@@ -11,7 +11,6 @@ defmodule App.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
     has_many :posts, App.Blog.Post
-    has_many :comments, App.Blog.Comment
 
     timestamps()
   end
