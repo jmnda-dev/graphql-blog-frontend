@@ -19,7 +19,7 @@ defmodule App.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published, :tags])
-    |> validate_required([:slug, :title, :excerpt, :featured_image, :content, :published, :tags])
+    |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published])
+    |> validate_required([:slug, :title, :excerpt, :featured_image, :content, :published])
   end
 end
