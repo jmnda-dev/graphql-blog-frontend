@@ -8,9 +8,9 @@ defmodule App.Blog.Post do
     field :featured_image, :string
     field :published, :boolean, default: false
     field :slug, :string
-    field :tags, {:array, :string}
     field :title, :string
     belongs_to :author, App.Accounts.User
+    many_to_many :tags, App.Blog.Tag, join_through: "posts_tags"
 
     timestamps()
   end
