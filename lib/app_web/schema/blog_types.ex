@@ -11,7 +11,8 @@ defmodule AppWeb.Schema.BlogTypes do
     field :featured_image, :string
     field :content, :string
     field :published, :boolean
+    field :updated_at, :date
 
-    field :user, :user, resolve: dataloader(Accounts)
+    field :author, :user, resolve: dataloader(Accounts)
   end
 end

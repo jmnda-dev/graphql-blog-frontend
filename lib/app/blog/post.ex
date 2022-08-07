@@ -10,7 +10,7 @@ defmodule App.Blog.Post do
     field :slug, :string
     field :tags, {:array, :string}
     field :title, :string
-    belongs_to :user, App.Accounts.User
+    belongs_to :author, App.Accounts.User
 
     timestamps()
   end
@@ -18,8 +18,9 @@ defmodule App.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published])
+    |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published, :author_id])
     |> Slugy.slugify([:title])
-    |> validate_required([:title, :excerpt, :featured_image, :content, :published])
+    |> validate_required([:title, :excerpt, :featured_image, :content, :published, :author_id])
+    |> assoc_constraint(:author_id)
   end
 end
