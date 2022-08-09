@@ -21,6 +21,17 @@ defmodule AppWeb.Schema do
       resolve(&Resolvers.Blog.get_post_by_slug/3)
     end
 
+    @desc "Get all tags"
+    field :tags, list_of(:tag) do
+      resolve(&Resolvers.Blog.list_tags/3)
+    end
+
+    @desc "Get a tag by slug"
+    field :tag, :tag do
+      arg(:name, non_null(:string))
+      resolve(&Resolvers.Blog.get_tag_by_name/3)
+    end
+
     @desc "Get a user"
     field :user, :user do
       arg(:id, non_null(:id))

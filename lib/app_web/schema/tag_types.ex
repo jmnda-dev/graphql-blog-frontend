@@ -6,6 +6,6 @@ defmodule AppWeb.Schema.TagTypes do
   object :tag do
     field :id, :id
     field :name, :string
-    field :posts, :post, resolve: dataloader(Blog)
+    field :posts, list_of(:post), resolve: dataloader(Blog)
   end
 end

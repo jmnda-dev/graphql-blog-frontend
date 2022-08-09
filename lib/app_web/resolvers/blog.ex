@@ -14,4 +14,18 @@ defmodule AppWeb.Resolvers.Blog do
         {:ok, post}
     end
   end
+
+  def list_tags(_parent, _args, _resolution) do
+    {:ok, Blog.list_tags()}
+  end
+
+  def get_tag_by_name(_parant, %{name: name}, _resolution) do
+    case Blog.get_tag(name) do
+      nil ->
+        {:error, "Tag with name '#{name}' not found"}
+
+      tag ->
+        {:ok, tag}
+    end
+  end
 end
