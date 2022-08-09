@@ -4,7 +4,7 @@ defmodule App.Blog.PostAdmin do
   def before_insert(conn, changeset) do
     {:ok,
      changeset
-     |> Ecto.Changeset.put_assoc(:user, conn.assigns.current_user)}
+     |> Ecto.Changeset.put_assoc(:author, conn.assigns.current_user)}
   end
 
   def form_fields(_) do

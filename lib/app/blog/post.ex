@@ -20,7 +20,6 @@ defmodule App.Blog.Post do
     post
     |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published, :author_id])
     |> Slugy.slugify([:title])
-    |> validate_required([:title, :excerpt, :featured_image, :content, :published, :author_id])
-    |> assoc_constraint(:author_id)
+    |> validate_required([:title, :excerpt, :featured_image, :content, :published])
   end
 end
