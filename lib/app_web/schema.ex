@@ -2,6 +2,7 @@ defmodule AppWeb.Schema do
   use Absinthe.Schema
   import_types(Absinthe.Type.Custom)
   import_types(AppWeb.Schema.BlogTypes)
+  import_types(AppWeb.Schema.TagTypes)
   import_types(AppWeb.Schema.AccountTypes)
 
   alias AppWeb.Resolvers
