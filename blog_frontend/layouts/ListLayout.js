@@ -8,7 +8,7 @@ import formatDate from '@/lib/utils/formatDate'
 export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }) {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
-    const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
+    const searchContent = frontMatter.title + frontMatter.excerpt + frontMatter.tags.map((tag) => tag.name ).join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -50,14 +50,14 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, updatedAt, title, excerpt, tags } = frontMatter
             return (
               <li key={slug} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                   <dl>
                     <dt className="sr-only">Published on</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{formatDate(date)}</time>
+                      <time dateTime={updatedAt}>{formatDate(updatedAt)}</time>
                     </dd>
                   </dl>
                   <div className="space-y-3 xl:col-span-3">
@@ -69,12 +69,12 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                       </h3>
                       <div className="flex flex-wrap">
                         {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
+                          <Tag key={tag.name} text={tag.name} />
                         ))}
                       </div>
                     </div>
                     <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
+                      {excerpt}
                     </div>
                   </div>
                 </article>
