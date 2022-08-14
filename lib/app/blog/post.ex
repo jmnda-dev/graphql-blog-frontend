@@ -9,8 +9,9 @@ defmodule App.Blog.Post do
     field :published, :boolean, default: false
     field :slug, :string
     field :title, :string
+    field :post_tags, App.Blog.ManySelectField, virtual: true
     belongs_to :author, App.Accounts.User
-    many_to_many :tags, App.Blog.Tag, join_through: "posts_tags"
+    many_to_many :tags, App.Blog.Tag, join_through: "posts_tags", on_replace: :delete
 
     timestamps()
   end
@@ -18,7 +19,15 @@ defmodule App.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:slug, :title, :excerpt, :featured_image, :content, :published, :author_id])
+    |> cast(attrs, [
+      :slug,
+      :title,
+      :excerpt,
+      :featured_image,
+      :content,
+      :published,
+      :author_id
+    ])
     |> Slugy.slugify([:title])
     |> validate_required([:title, :excerpt, :featured_image, :content, :published])
   end
