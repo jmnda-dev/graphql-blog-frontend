@@ -3,7 +3,7 @@ defmodule App.Blog.Post do
   import Ecto.Changeset
 
   schema "posts" do
-    field :content, :string
+    field :content, App.Blog.MarkDownField
     field :excerpt, :string
     field :featured_image, :string
     field :published, :boolean, default: false

@@ -49,7 +49,7 @@ defmodule App.Blog.PostAdmin do
       slug: %{create: :readonly, update: :readonly},
       title: %{type: nil},
       excerpt: nil,
-      content: %{type: :richtext},
+      content: nil,
       featured_image: nil,
       published: %{type: :boolean},
       post_tags: %{choices: get_tag_choices(), field: :tags, value: :id}
