@@ -10,7 +10,6 @@ const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
   const posts = await getPosts()
-  console.log("POSTS:", posts)
   return {
     paths: posts.map((p) => ({
       params: {
@@ -48,18 +47,18 @@ export default function Blog({ post, authorDetails, prev, next }) {
 
   return (
     <>
-        <div>
-          <h1 class="py-3 text-4xl">Post Content</h1>
-          <p>Written by: {authorDetails.firstName} {authorDetails.lastName}</p>
+      <div>
+        <h1 class="py-3 text-4xl">Post Content</h1>
+        <p>Written by: {authorDetails.firstName} {authorDetails.lastName}</p>
 
-          <div className="flex flex-wrap">
-            {post.tags.map((tag) => (
-              <Tag key={tag.name} text={tag.name} />
-            ))}
-          </div>
-          
-          {post.content}
+        <div className="flex flex-wrap">
+          {post.tags.map((tag) => (
+            <Tag key={tag.name} text={tag.name} />
+          ))}
         </div>
+
+        {post.content}
+      </div>
 
     </>
   )

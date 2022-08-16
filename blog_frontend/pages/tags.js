@@ -2,11 +2,12 @@ import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllTags } from '@/lib/tags'
+// import { getAllTags } from '@/lib/tags'
+import { getAllTags } from 'lib/queries';
 import kebabCase from '@/lib/utils/kebabCase'
 
 export async function getStaticProps() {
-  const tags = await getAllTags('blog')
+  const tags = await getAllTags()
 
   return { props: { tags } }
 }
@@ -29,10 +30,10 @@ export default function Tags({ tags }) {
               <div key={t} className="mt-2 mb-2 mr-5">
                 <Tag text={t} />
                 <Link
-                  href={`/tags/${kebabCase(t)}`}
+                  href={`/tags/${kebabCase(tags[t].name)}`}
                   className="-ml-2 text-sm font-semibold uppercase text-gray-600 dark:text-gray-300"
                 >
-                  {` (${tags[t]})`}
+                  {` (${tags[t].name})`}
                 </Link>
               </div>
             )
