@@ -28,4 +28,23 @@ defmodule App.AccountsFixtures do
     [_, token | _] = String.split(captured_email.text_body, "[TOKEN]")
     token
   end
+
+  @doc """
+  Generate a profile.
+  """
+  def profile_fixture(attrs \\ %{}) do
+    {:ok, profile} =
+      attrs
+      |> Enum.into(%{
+        about: "some about",
+        description: "some description",
+        github: "some github",
+        linkedin: "some linkedin",
+        photo: "some photo",
+        twitter: "some twitter"
+      })
+      |> App.Accounts.create_profile()
+
+    profile
+  end
 end
