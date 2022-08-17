@@ -20,7 +20,10 @@ config :app, AppWeb.Endpoint,
 config :kaffy,
   otp_app: :app,
   ecto_repo: App.Repo,
-  router: AppWeb.Router
+  router: AppWeb.Router,
+  extensions: [
+    App.Blog.Kaffy.Extension
+  ]
 
 # Configures the mailer
 #
