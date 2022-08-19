@@ -4,6 +4,7 @@ defmodule AppWeb.UserAuth do
 
   alias App.Accounts
   alias AppWeb.Router.Helpers, as: Routes
+  alias App.Accounts.{Roles, User}
 
   # Make the remember me cookie valid for 60 days.
   # If you want bump or reduce this value, also change
@@ -139,6 +140,18 @@ defmodule AppWeb.UserAuth do
     end
   end
 
+  def require_admin(conn, _opts) do
+    with user = %User{} <- conn.assigns[:current_user],
+         true <- check_role(user) do
+      conn
+    else
+      _ ->
+        conn
+        |> send_resp(403, "Unauthorized")
+        |> halt()
+    end
+  end
+
   defp maybe_store_return_to(%{method: "GET"} = conn) do
     put_session(conn, :user_return_to, current_path(conn))
   end
@@ -146,4 +159,15 @@ defmodule AppWeb.UserAuth do
   defp maybe_store_return_to(conn), do: conn
 
   defp signed_in_path(_conn), do: "/"
+
+  defp check_role(user) do
+    case user.roles do
+      [] ->
+        false
+
+      roles ->
+        IO.puts("ROLES")
+        Roles.has_role?(roles, ["admin", "owner"])
+    end
+  end
 end
