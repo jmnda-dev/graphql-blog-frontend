@@ -10,11 +10,23 @@ defmodule AppWeb.Schema.AccountTypes do
     field :last_name, :string
     field :username, :string
     field :email, :string
+    field :profile, :profile, resolve: dataloader(Accounts)
     field :posts, list_of(:post), resolve: dataloader(Accounts)
   end
 
   object :session do
     field :user, :user
     field :token, :string
+  end
+
+  @desc "Profile info about blog owner"
+  object :profile do
+    field :about, :string
+    field :description, :string
+    field :github, :string
+    field :linkedin, :string
+    field :photo, :string
+    field :twitter, :string
+    field :user, :user, resolve: dataloader(Accounts)
   end
 end
