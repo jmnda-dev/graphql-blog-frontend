@@ -10,6 +10,7 @@ defmodule App.Accounts.User do
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
+    field :roles, {:array, :string}
     has_many :posts, App.Blog.Post
     has_one :profile, App.Accounts.Profile
 
@@ -35,8 +36,8 @@ defmodule App.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:first_name, :last_name, :username, :email, :password])
-    |> validate_required([:email, :password])
+    |> cast(attrs, [:first_name, :last_name, :username, :email, :password, :roles])
+    |> validate_required([:email, :password, :roles])
     |> unique_constraint(:email)
     |> validate_email()
     |> validate_password(opts)
