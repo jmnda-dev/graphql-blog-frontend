@@ -15,6 +15,7 @@ defmodule AppWeb.Router do
 
   pipeline :kaffy_authenticate do
     plug :fetch_current_user
+    plug :require_admin
   end
 
   pipeline :api do
@@ -38,7 +39,7 @@ defmodule AppWeb.Router do
 
   use Kaffy.Routes,
     scope: "/admin",
-    pipe_through: [:kaffy_authenticate, :require_authenticated_user]
+    pipe_through: [:kaffy_authenticate]
 
   # Other scopes may use custom stacks.
   # scope "/api", AppWeb do
