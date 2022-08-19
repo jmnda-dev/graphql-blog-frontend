@@ -7,7 +7,6 @@ defmodule AppWeb.Schema do
 
   alias AppWeb.Resolvers
   alias App.{Accounts, Blog}
-  alias AppWeb.Middleware.Authenticate
 
   query do
     @desc "Get all posts"
@@ -35,33 +34,13 @@ defmodule AppWeb.Schema do
     @desc "Get a user"
     field :user, :user do
       arg(:id, non_null(:id))
-      middleware(Authenticate)
+      # middleware(Authenticate)
       resolve(&Resolvers.Accounts.find_user/3)
     end
 
     @desc "Get the currently signed in user"
     field :me, :user do
       resolve(&Resolvers.Accounts.me/3)
-    end
-  end
-
-  mutation do
-    @desc "Create a user account"
-    field :signup, :session do
-      arg(:first_name, non_null(:string))
-      arg(:last_name, non_null(:string))
-      arg(:username, :string)
-      arg(:email, non_null(:string))
-      arg(:password, non_null(:string))
-
-      resolve(&Resolvers.Accounts.signup/3)
-    end
-
-    @desc "Signin a user"
-    field :signin, :session do
-      arg(:email, non_null(:string))
-      arg(:password, non_null(:string))
-      resolve(&Resolvers.Accounts.signin/3)
     end
   end
 
