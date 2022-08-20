@@ -1,21 +1,17 @@
-import { MDXLayoutRenderer } from '@/components/MDXComponents'
-import { getFileBySlug } from '@/lib/mdx'
+import AuthorLayout from '@/layouts/AuthorLayout'
+import { getBlogAuthorProfile } from '@/lib/queries'
 
 const DEFAULT_LAYOUT = 'AuthorLayout'
 
 export async function getStaticProps() {
-  const authorDetails = await getFileBySlug('authors', ['default'])
-  return { props: { authorDetails } }
+  const authorDetails = await getBlogAuthorProfile()
+  return { props: authorDetails }
 }
 
-export default function About({ authorDetails }) {
-  const { mdxSource, frontMatter } = authorDetails
+export default function About( authorDetails ) {
 
   return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-    />
+    <AuthorLayout authorDetails={authorDetails} />
+
   )
 }
