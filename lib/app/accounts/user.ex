@@ -37,7 +37,7 @@ defmodule App.Accounts.User do
   def registration_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:first_name, :last_name, :username, :email, :password, :roles])
-    |> validate_required([:email, :password, :roles])
+    |> validate_required([:email, :password])
     |> unique_constraint(:email)
     |> validate_email()
     |> validate_password(opts)
