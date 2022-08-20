@@ -6,6 +6,7 @@ defmodule App.Blog.Post do
     field :content, App.Blog.MarkDownField
     field :excerpt, :string
     field :featured_image, :string
+    field :featured_image_upload, :any, virtual: true
     field :published, :boolean, default: false
     field :slug, :string
     field :title, :string
@@ -26,7 +27,8 @@ defmodule App.Blog.Post do
       :featured_image,
       :content,
       :published,
-      :author_id
+      :author_id,
+      :featured_image_upload
     ])
     |> Slugy.slugify([:title])
     |> validate_required([:title, :excerpt, :featured_image, :content, :published])
