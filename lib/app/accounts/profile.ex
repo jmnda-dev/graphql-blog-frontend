@@ -5,9 +5,11 @@ defmodule App.Accounts.Profile do
   schema "profiles" do
     field :about, :string
     field :description, :string
+    field :occupation, :string
+    field :company, :string
     field :github, :string
     field :linkedin, :string
-    field :photo, :string
+    field :avatar, :string
     field :twitter, :string
     belongs_to :user, App.Accounts.User
 
@@ -17,7 +19,7 @@ defmodule App.Accounts.Profile do
   @doc false
   def changeset(profile, attrs) do
     profile
-    |> cast(attrs, [:photo, :about, :description, :github, :twitter, :linkedin])
-    |> validate_required([:photo, :about, :description, :github, :twitter, :linkedin])
+    |> cast(attrs, [:avatar, :about, :occupation, :company, :description, :github, :twitter, :linkedin])
+    |> validate_required([:avatar, :about, :occupation, :company])
   end
 end

@@ -21,11 +21,13 @@ defmodule AppWeb.Schema.AccountTypes do
 
   @desc "Profile info about blog owner"
   object :profile do
+    field :avatar, :string
     field :about, :string
     field :description, :string
+    field :company, :string
+    field :occupation, :string
     field :github, :string
     field :linkedin, :string
-    field :photo, :string
     field :twitter, :string
     field :user, :user, resolve: dataloader(Accounts)
   end

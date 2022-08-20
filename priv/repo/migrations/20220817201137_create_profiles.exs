@@ -3,9 +3,11 @@ defmodule App.Repo.Migrations.CreateProfiles do
 
   def change do
     create table(:profiles) do
-      add :photo, :string
+      add :avatar, :string
       add :about, :string
       add :description, :text
+      add :company, :string
+      add :occupation, :string
       add :github, :string
       add :twitter, :string
       add :linkedin, :string
