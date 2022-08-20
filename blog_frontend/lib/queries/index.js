@@ -1,6 +1,6 @@
 import { request, gql } from 'graphql-request'
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT
+const graphqlAPI = process.env.NEXT_GRAPHQL_ENDPOINT
 
 export async function getPosts() {
   const query = gql`
@@ -88,4 +88,29 @@ export async function getTagByName(name) {
   const tag = await request(graphqlAPI, query, { name })
 
   return tag.tag
+}
+
+export async function getBlogAuthorProfile() {
+  const query = gql`
+      query {
+        authorProfile{
+          firstName
+          lastName
+          profile {
+            avatar
+            about
+            company
+            occupation
+            description
+            github
+            linkedin
+            twitter
+          }
+        }
+      }
+    `
+
+  const { authorProfile } = await request(graphqlAPI, query)
+
+  return authorProfile
 }
