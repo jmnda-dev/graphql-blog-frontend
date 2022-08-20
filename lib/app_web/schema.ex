@@ -31,16 +31,10 @@ defmodule AppWeb.Schema do
       resolve(&Resolvers.Blog.get_tag_by_name/3)
     end
 
-    @desc "Get a user"
-    field :user, :user do
-      arg(:id, non_null(:id))
+    @desc "Get the Profile for the Blog owner"
+    field :author_profile, :user do
       # middleware(Authenticate)
-      resolve(&Resolvers.Accounts.find_user/3)
-    end
-
-    @desc "Get the currently signed in user"
-    field :me, :user do
-      resolve(&Resolvers.Accounts.me/3)
+      resolve(&Resolvers.Accounts.get_author_profile/3)
     end
   end
 

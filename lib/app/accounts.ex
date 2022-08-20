@@ -373,34 +373,33 @@ defmodule App.Accounts do
 
   alias App.Accounts.Profile
 
-  @doc """
-  Returns the list of profiles.
-
-  ## Examples
-
-      iex> list_profiles()
-      [%Profile{}, ...]
-
-  """
-  def list_profiles do
-    Repo.all(Profile)
-  end
 
   @doc """
-  Gets a single profile.
+  Gets a profile for the Blog author
 
   Raises `Ecto.NoResultsError` if the Profile does not exist.
 
   ## Examples
 
-      iex> get_profile!(123)
-      %Profile{}
+      iex> get_profile!()
+      %User{
+        email: "email@example.com
+        username: nil
+        profile: %Profile{
+          ...
+          twitter: https://twitter.com/xxx
+          github: https://github.com/xxx
+          ...
+        }
+      }
 
-      iex> get_profile!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_profile!()
+      nil
 
   """
-  def get_profile!(id), do: Repo.get!(Profile, id)
+  def author_profile!() do
+    Repo.get_by(User, roles: ["admin", "owner"]) |> Repo.preload(:profile)
+  end
 
   @doc """
   Creates a profile.
