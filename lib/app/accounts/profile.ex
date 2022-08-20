@@ -10,6 +10,7 @@ defmodule App.Accounts.Profile do
     field :github, :string
     field :linkedin, :string
     field :avatar, :string
+    field :avatar_upload, :any, virtual: true
     field :twitter, :string
     belongs_to :user, App.Accounts.User
 
@@ -19,7 +20,17 @@ defmodule App.Accounts.Profile do
   @doc false
   def changeset(profile, attrs) do
     profile
-    |> cast(attrs, [:avatar, :about, :occupation, :company, :description, :github, :twitter, :linkedin])
-    |> validate_required([:avatar, :about, :occupation, :company])
+    |> cast(attrs, [
+      :avatar,
+      :about,
+      :occupation,
+      :company,
+      :description,
+      :github,
+      :twitter,
+      :linkedin,
+      :avatar_upload
+    ])
+    |> validate_required([:occupation, :company])
   end
 end
