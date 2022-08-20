@@ -166,7 +166,6 @@ defmodule AppWeb.UserAuth do
         false
 
       roles ->
-        IO.puts("ROLES")
         Roles.has_role?(roles, ["admin", "owner"])
     end
   end
