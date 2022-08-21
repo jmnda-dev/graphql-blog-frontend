@@ -1,24 +1,34 @@
 # The directory Mix will write compiled artifacts to.
-/blog_backend/_build/
+/_build/
+
 # If you run "mix test --cover", coverage assets end up here.
-/blog_backend/cover/
+/cover/
+
 # The directory Mix downloads your dependencies sources to.
-/blog_backend/deps/
+/deps/
+
 # Where 3rd-party dependencies like ExDoc output generated docs.
-/blog_backend/doc/
+/doc/
+
 # Ignore .fetch files in case you like to edit your project deps locally.
-/blog_backend/.fetch
+/.fetch
+
 # If the VM crashes, it generates a dump, let's ignore it too.
-/blog_backenderl_crash.dump
+erl_crash.dump
+
 # Also ignore archive artifacts (built via "mix archive.build").
-/blog_backend*.ez
+*.ez
+
 # Ignore package tarball (built via "mix hex.build").
-/blog_backendapp-*.tar
+app-*.tar
+
 # Ignore assets that are produced by build tools.
-/blog_backend/priv/static/assets/
+/priv/static/assets/
+
 # Ignore digested assets cache.
-/blog_backend/priv/static/cache_manifest.json
+/priv/static/cache_manifest.json
+
 # In case you use Node.js/npm, you want to ignore these.
-/blog_backend/npm-debug.log
-/blog_backend/assets/node_modules/
+npm-debug.log
+/assets/node_modules/
 
