@@ -9,7 +9,7 @@ import kebabCase from '@/lib/utils/kebabCase'
 export async function getStaticProps() {
   const tags = await getAllTags()
 
-  return { props: { tags } }
+  return { props: { tags }, revalidate: 7200 }
 }
 
 export default function Tags({ tags }) {

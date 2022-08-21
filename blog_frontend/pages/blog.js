@@ -15,7 +15,7 @@ export async function getStaticProps() {
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  return { props: { initialDisplayPosts, posts, pagination } }
+  return { props: { initialDisplayPosts, posts, pagination }, revalidate: 7200 }
 }
 
 export default function Blog({ posts, initialDisplayPosts, pagination }) {

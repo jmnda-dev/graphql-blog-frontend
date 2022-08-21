@@ -13,7 +13,7 @@ const MAX_DISPLAY = 5
 export async function getStaticProps() {
   const posts = await getPosts()
 
-  return { props: { posts } }
+  return { props: { posts }, revalidate: 7200 }
 }
 
 export default function Home({ posts }) {

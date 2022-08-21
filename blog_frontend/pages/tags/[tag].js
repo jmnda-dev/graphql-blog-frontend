@@ -40,7 +40,7 @@ export async function getStaticProps({ params }) {
   }
 
 
-  return { props: { posts: posts, tag: params.tag } }
+  return { props: { posts: posts, tag: params.tag }, revalidate: 7200 }
 }
 
 export default function Tag({ posts, tag }) {
