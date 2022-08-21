@@ -18,10 +18,12 @@ config :logger, level: :info
 #
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
-#
-#     config :app, AppWeb.Endpoint,
-#       ...,
-#       url: [host: "example.com", port: 443],
+host = System.get_env("PHX_HOST") || "example.com"
+port = String.to_integer(System.get_env("PORT") || "4000")
+
+config :app, AppWeb.Endpoint,
+  url: [scheme: "https", host: host, port: port],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
 #       https: [
 #         ...,
 #         port: 443,
