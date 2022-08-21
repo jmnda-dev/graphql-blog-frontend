@@ -1,12 +1,10 @@
 import fs from 'fs'
-import PageTitle from '@/components/PageTitle'
 import Tag from '@/components/Tag'
 import generateRss from '@/lib/generate-rss'
-// import { MDXLayoutRenderer } from '@/components/MDXComponents'
-// import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 import { getPostBySlug, getPosts } from '@/lib/queries'
+import PostLayout from '@/layouts/PostLayout'
 
-const DEFAULT_LAYOUT = 'PostLayout'
+
 
 export async function getStaticPaths() {
   const posts = await getPosts()
@@ -47,18 +45,23 @@ export default function Blog({ post, authorDetails, prev, next }) {
 
   return (
     <>
-      <div>
+    <PostLayout 
+      frontMatter={post}
+      authorDetails={authorDetails}
+      prev={prev}
+      next={next} />
+      {/* <div>
         <h1 class="py-3 text-4xl">Post Content</h1>
         <p>Written by: {authorDetails.firstName} {authorDetails.lastName}</p>
-
         <div className="flex flex-wrap">
           {post.tags.map((tag) => (
             <Tag key={tag.name} text={tag.name} />
           ))}
         </div>
 
-        {post.content}
-      </div>
+        <div dangerouslySetInnerHTML={{__html: post.content}}>
+        </div> 
+      </div> */}
 
     </>
   )

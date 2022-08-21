@@ -38,6 +38,10 @@ export async function getPostBySlug(slug) {
             author{
               firstName
               lastName
+              profile{
+                avatar
+                twitter
+              }
             }
         }
       }
