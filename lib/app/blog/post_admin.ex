@@ -63,7 +63,7 @@ defmodule App.Blog.PostAdmin do
       slug: %{create: :readonly, update: :readonly},
       title: %{type: nil},
       excerpt: nil,
-      content: nil,
+      content: %{type: :richtext},
       featured_image: nil,
       featured_image_upload: %{type: :file},
       published: %{type: :boolean},
