@@ -14,80 +14,17 @@ alias App.Accounts
 alias App.Blog
 alias App.Blog.{Post, Comment, Tag}
 
-users = [
+{:ok, author} = Accounts.register_user(
   %{
-    "first_name" => "Leanne",
-    "last_name" => "Graham",
-    "username" => "Bret",
-    "email" => "Sincere@april.biz",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Ervin",
-    "last_name" => "Howell",
-    "username" => "Antonette",
-    "email" => "Shanna@melissa.tv",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Clementine",
-    "last_name" => "Bauch",
-    "username" => "Samantha",
-    "email" => "Nathan@yesenia.net",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Patricia",
-    "last_name" => "Lebsack",
-    "username" => "Karianne",
-    "email" => "Julianne.OConner@kory.org",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Chelsey",
-    "last_name" => "Dietrich",
-    "username" => "Kamren",
-    "email" => "Lucio_Hettinger@annie.ca",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Mrs",
-    "last_name" => " Dennis Schulist",
-    "username" => "Leopoldo_Corkery",
-    "email" => "Karley_Dach@jasper.info",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Kurtis",
-    "last_name" => "Weissnat",
-    "username" => "Elwyn.Skiles",
-    "email" => "Telly.Hoeger@billy.biz",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Nicholas",
-    "last_name" => "Runolfsdottir V",
-    "username" => "Maxime_Nienow",
-    "email" => "Sherwood@rosamond.me",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Glenna",
-    "last_name" => "Reichert",
-    "username" => "Delphine",
-    "email" => "Chaim_McDermott@dana.io",
-    "password" => "password1234567890"
-  },
-  %{
-    "first_name" => "Clementina",
-    "last_name" => "DuBuque",
-    "username" => "Moriah.Stanton",
-    "email" => "Rey.Padberg@karina.biz",
-    "password" => "password1234567890"
+    "first_name"=> "John",
+    "last_name"=> "Doe",
+    "email"=> "johndoe@mail.com",
+    "password"=> "1234567890000",
+    "roles"=> ["admin", "owner"]
   }
-]
+)
 
-Enum.each(users, &Accounts.register_user/1)
+
 
 posts = [
   %{
@@ -97,7 +34,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sunt-aut-facere-repellat-provident-occaecati-excepturi-optio-reprehenderit",
     "title" => "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -107,7 +44,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "qui-est-esse",
     "title" => "qui est esse",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -117,7 +54,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ea-molestias-quasi-exercitationem-repellat-qui-ipsa-sit-aut",
     "title" => "ea molestias quasi exercitationem repellat qui ipsa sit aut",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -127,7 +64,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "eum-et-est-occaecati",
     "title" => "eum et est occaecati",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -137,7 +74,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "nesciunt-quas-odio",
     "title" => "nesciunt quas odio",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -147,7 +84,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "dolorem-eum-magni-eos-aperiam-quia",
     "title" => "dolorem eum magni eos aperiam quia",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -157,7 +94,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "magnam-facilis-autem",
     "title" => "magnam facilis autem",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -167,7 +104,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "dolorem-dolore-est-ipsam",
     "title" => "dolorem dolore est ipsam",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -177,7 +114,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "nesciunt-iure-omnis-dolorem-tempora-et-accusantium",
     "title" => "nesciunt iure omnis dolorem tempora et accusantium",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -187,7 +124,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "optio-molestias-id-quia-eum",
     "title" => "optio molestias id quia eum",
-    "author_id" => 1,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -197,7 +134,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "et-ea-vero-quia-laudantium-autem",
     "title" => "et ea vero quia laudantium autem",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -207,7 +144,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "in-quibusdam-tempore-odit-est-dolorem",
     "title" => "in quibusdam tempore odit est dolorem",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -217,7 +154,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "dolorum-ut-in-voluptas-mollitia-et-saepe-quo-animi",
     "title" => "dolorum ut in voluptas mollitia et saepe quo animi",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -227,7 +164,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "voluptatem-eligendi-optio",
     "title" => "voluptatem eligendi optio",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -237,7 +174,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "eveniet-quod-temporibus",
     "title" => "eveniet quod temporibus",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -247,7 +184,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sint-suscipit-perspiciatis-velit-dolorum-rerum-ipsa-laboriosam-odio",
     "title" => "sint suscipit perspiciatis velit dolorum rerum ipsa laboriosam odio",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -257,7 +194,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "fugit-voluptas-sed-molestias-voluptatem-provident",
     "title" => "fugit voluptas sed molestias voluptatem provident",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -267,7 +204,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "voluptate-et-itaque-vero-tempora-molestiae",
     "title" => "voluptate et itaque vero tempora molestiae",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -277,7 +214,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "adipisci-placeat-illum-aut-reiciendis-qui",
     "title" => "adipisci placeat illum aut reiciendis qui",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -287,7 +224,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "doloribus-ad-provident-suscipit-at",
     "title" => "doloribus ad provident suscipit at",
-    "author_id" => 2,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -297,7 +234,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "asperiores-ea-ipsam-voluptatibus-modi-minima-quia-sint",
     "title" => "asperiores ea ipsam voluptatibus modi minima quia sint",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -307,7 +244,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "dolor-sint-quo-a-velit-explicabo-quia-nam",
     "title" => "dolor sint quo a velit explicabo quia nam",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -317,7 +254,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "maxime-id-vitae-nihil-numquam",
     "title" => "maxime id vitae nihil numquam",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -327,7 +264,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "autem-hic-labore-sunt-dolores-incidunt",
     "title" => "autem hic labore sunt dolores incidunt",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -337,7 +274,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "rem-alias-distinctio-quo-quis",
     "title" => "rem alias distinctio quo quis",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -347,7 +284,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "est-et-quae-odit-qui-non",
     "title" => "est et quae odit qui non",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -357,7 +294,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "quasi-id-et-eos-tenetur-aut-quo-autem",
     "title" => "quasi id et eos tenetur aut quo autem",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -367,7 +304,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "delectus-ullam-et-corporis-nulla-voluptas-sequi",
     "title" => "delectus ullam et corporis nulla voluptas sequi",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -377,7 +314,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "iusto-eius-quod-necessitatibus-culpa-ea",
     "title" => "iusto eius quod necessitatibus culpa ea",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -387,7 +324,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "a-quo-magni-similique-perferendis",
     "title" => "a quo magni similique perferendis",
-    "author_id" => 3,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -397,7 +334,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ullam-ut-quidem-id-aut-vel-consequuntur",
     "title" => "ullam ut quidem id aut vel consequuntur",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -407,7 +344,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "doloremque-illum-aliquid-sunt",
     "title" => "doloremque illum aliquid sunt",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -417,7 +354,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "qui-explicabo-molestiae-dolorem",
     "title" => "qui explicabo molestiae dolorem",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -427,7 +364,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "magnam-ut-rerum-iure",
     "title" => "magnam ut rerum iure",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -437,7 +374,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "id-nihil-consequatur-molestias-animi-provident",
     "title" => "id nihil consequatur molestias animi provident",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -447,7 +384,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "fuga-nam-accusamus-voluptas-reiciendis-itaque",
     "title" => "fuga nam accusamus voluptas reiciendis itaque",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -457,7 +394,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "provident-vel-ut-sit-ratione-est",
     "title" => "provident vel ut sit ratione est",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -467,7 +404,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "explicabo-et-eos-deleniti-nostrum-ab-id-repellendus",
     "title" => "explicabo et eos deleniti nostrum ab id repellendus",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -477,7 +414,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "eos-dolorem-iste-accusantium-est-eaque-quam",
     "title" => "eos dolorem iste accusantium est eaque quam",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -487,7 +424,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "enim-quo-cumque",
     "title" => "enim quo cumque",
-    "author_id" => 4,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -497,7 +434,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "non-est-facere",
     "title" => "non est facere",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -507,7 +444,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "commodi-ullam-sint-et-excepturi-error-explicabo-praesentium-voluptas",
     "title" => "commodi ullam sint et excepturi error explicabo praesentium voluptas",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -517,7 +454,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "eligendi-iste-nostrum-consequuntur-adipisci-praesentium-sit-beatae-perferendis",
     "title" => "eligendi iste nostrum consequuntur adipisci praesentium sit beatae perferendis",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -527,7 +464,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "optio-dolor-molestias-sit",
     "title" => "optio dolor molestias sit",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -537,7 +474,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ut-numquam-possimus-omnis-eius-suscipit-laudantium-iure",
     "title" => "ut numquam possimus omnis eius suscipit laudantium iure",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -547,7 +484,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "aut-quo-modi-neque-nostrum-ducimus",
     "title" => "aut quo modi neque nostrum ducimus",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -557,7 +494,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "quibusdam-cumque-rem-aut-deserunt",
     "title" => "quibusdam cumque rem aut deserunt",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -567,7 +504,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ut-voluptatem-illum-ea-doloribus-itaque-eos",
     "title" => "ut voluptatem illum ea doloribus itaque eos",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -577,7 +514,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "laborum-non-sunt-aut-ut-assumenda-perspiciatis-voluptas",
     "title" => "laborum non sunt aut ut assumenda perspiciatis voluptas",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -587,7 +524,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "repellendus-qui-recusandae-incidunt-voluptates-tenetur-qui-omnis-exercitationem",
     "title" => "repellendus qui recusandae incidunt voluptates tenetur qui omnis exercitationem",
-    "author_id" => 5,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -597,7 +534,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "soluta-aliquam-aperiam-consequatur-illo-quis-voluptas",
     "title" => "soluta aliquam aperiam consequatur illo quis voluptas",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -607,7 +544,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "qui-enim-et-consequuntur-quia-animi-quis-voluptate-quibusdam",
     "title" => "qui enim et consequuntur quia animi quis voluptate quibusdam",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -617,7 +554,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ut-quo-aut-ducimus-alias",
     "title" => "ut quo aut ducimus alias",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -627,7 +564,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sit-asperiores-ipsam-eveniet-odio-non-quia",
     "title" => "sit asperiores ipsam eveniet odio non quia",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -637,7 +574,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sit-vel-voluptatem-et-non-libero",
     "title" => "sit vel voluptatem et non libero",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -647,7 +584,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "qui-et-at-rerum-necessitatibus",
     "title" => "qui et at rerum necessitatibus",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -657,7 +594,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sed-ab-est-est",
     "title" => "sed ab est est",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -667,7 +604,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "voluptatum-itaque-dolores-nisi-et-quasi",
     "title" => "voluptatum itaque dolores nisi et quasi",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -677,7 +614,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "qui-commodi-dolor-at-maiores-et-quis-id-accusantium",
     "title" => "qui commodi dolor at maiores et quis id accusantium",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -687,7 +624,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "consequatur-placeat-omnis-quisquam-quia-reprehenderit-fugit-veritatis-facere",
     "title" => "consequatur placeat omnis quisquam quia reprehenderit fugit veritatis facere",
-    "author_id" => 6,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -697,7 +634,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "voluptatem-doloribus-consectetur-est-ut-ducimus",
     "title" => "voluptatem doloribus consectetur est ut ducimus",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -707,7 +644,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "beatae-enim-quia-vel",
     "title" => "beatae enim quia vel",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -717,7 +654,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "voluptas-blanditiis-repellendus-animi-ducimus-error-sapiente-et-suscipit",
     "title" => "voluptas blanditiis repellendus animi ducimus error sapiente et suscipit",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -727,7 +664,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "et-fugit-quas-eum-in-in-aperiam-quod",
     "title" => "et fugit quas eum in in aperiam quod",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -737,7 +674,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "consequatur-id-enim-sunt-et-et",
     "title" => "consequatur id enim sunt et et",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -747,7 +684,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "repudiandae-ea-animi-iusto",
     "title" => "repudiandae ea animi iusto",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -757,7 +694,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "aliquid-eos-sed-fuga-est-maxime-repellendus",
     "title" => "aliquid eos sed fuga est maxime repellendus",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -767,7 +704,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "odio-quis-facere-architecto-reiciendis-optio",
     "title" => "odio quis facere architecto reiciendis optio",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -777,7 +714,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "fugiat-quod-pariatur-odit-minima",
     "title" => "fugiat quod pariatur odit minima",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -787,7 +724,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "voluptatem-laborum-magni",
     "title" => "voluptatem laborum magni",
-    "author_id" => 7,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -797,7 +734,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "et-iusto-veniam-et-illum-aut-fuga",
     "title" => "et iusto veniam et illum aut fuga",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -807,7 +744,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sint-hic-doloribus-consequatur-eos-non-id",
     "title" => "sint hic doloribus consequatur eos non id",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -817,7 +754,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "consequuntur-deleniti-eos-quia-temporibus-ab-aliquid-at",
     "title" => "consequuntur deleniti eos quia temporibus ab aliquid at",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -827,7 +764,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "enim-unde-ratione-doloribus-quas-enim-ut-sit-sapiente",
     "title" => "enim unde ratione doloribus quas enim ut sit sapiente",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -837,7 +774,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "dignissimos-eum-dolor-ut-enim-et-delectus-in",
     "title" => "dignissimos eum dolor ut enim et delectus in",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -847,7 +784,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "doloremque-officiis-ad-et-non-perferendis",
     "title" => "doloremque officiis ad et non perferendis",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -857,7 +794,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "necessitatibus-quasi-exercitationem-odio",
     "title" => "necessitatibus quasi exercitationem odio",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -867,7 +804,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "quam-voluptatibus-rerum-veritatis",
     "title" => "quam voluptatibus rerum veritatis",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -877,7 +814,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "pariatur-consequatur-quia-magnam-autem-omnis-non-amet",
     "title" => "pariatur consequatur quia magnam autem omnis non amet",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -887,7 +824,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "labore-in-ex-et-explicabo-corporis-aut-quas",
     "title" => "labore in ex et explicabo corporis aut quas",
-    "author_id" => 8,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -897,7 +834,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "tempora-rem-veritatis-voluptas-quo-dolores-vero",
     "title" => "tempora rem veritatis voluptas quo dolores vero",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -907,7 +844,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "laudantium-voluptate-suscipit-sunt-enim-enim",
     "title" => "laudantium voluptate suscipit sunt enim enim",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -917,7 +854,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "odit-et-voluptates-doloribus-alias-odio-et",
     "title" => "odit et voluptates doloribus alias odio et",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -927,7 +864,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "optio-ipsam-molestias-necessitatibus-occaecati-facilis-veritatis-dolores-aut",
     "title" => "optio ipsam molestias necessitatibus occaecati facilis veritatis dolores aut",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -937,7 +874,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "dolore-veritatis-porro-provident-adipisci-blanditiis-et-sunt",
     "title" => "dolore veritatis porro provident adipisci blanditiis et sunt",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -947,7 +884,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "placeat-quia-et-porro-iste",
     "title" => "placeat quia et porro iste",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -957,7 +894,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "nostrum-quis-quasi-placeat",
     "title" => "nostrum quis quasi placeat",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -967,7 +904,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sapiente-omnis-fugit-eos",
     "title" => "sapiente omnis fugit eos",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -977,7 +914,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "sint-soluta-et-vel-magnam-aut-ut-sed-qui",
     "title" => "sint soluta et vel magnam aut ut sed qui",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -987,7 +924,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ad-iusto-omnis-odit-dolor-voluptatibus",
     "title" => "ad iusto omnis odit dolor voluptatibus",
-    "author_id" => 9,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -997,7 +934,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "aut-amet-sed",
     "title" => "aut amet sed",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1007,7 +944,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "ratione-ex-tenetur-perferendis",
     "title" => "ratione ex tenetur perferendis",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1017,7 +954,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "beatae-soluta-recusandae",
     "title" => "beatae soluta recusandae",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1027,7 +964,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "qui-qui-voluptates-illo-iste-minima",
     "title" => "qui qui voluptates illo iste minima",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1037,7 +974,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "id-minus-libero-illum-nam-ad-officiis",
     "title" => "id minus libero illum nam ad officiis",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1047,7 +984,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "quaerat-velit-veniam-amet-cupiditate-aut-numquam-ut-sequi",
     "title" => "quaerat velit veniam amet cupiditate aut numquam ut sequi",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1057,7 +994,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "quas-fugiat-ut-perspiciatis-vero-provident",
     "title" => "quas fugiat ut perspiciatis vero provident",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1067,7 +1004,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "laboriosam-dolor-voluptates",
     "title" => "laboriosam dolor voluptates",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1077,7 +1014,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "temporibus-sit-alias-delectus-eligendi-possimus-magni",
     "title" => "temporibus sit alias delectus eligendi possimus magni",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   },
   %{
@@ -1087,7 +1024,7 @@ posts = [
     "featured_image" => "N/A",
     "slug" => "at-nam-consequatur-ea-labore-ea-harum",
     "title" => "at nam consequatur ea labore ea harum",
-    "author_id" => 10,
+    "author_id" => author.id,
     "published" => true
   }
 ]
