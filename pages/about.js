@@ -5,7 +5,7 @@ const DEFAULT_LAYOUT = 'AuthorLayout'
 
 export async function getStaticProps() {
   const authorDetails = await getBlogAuthorProfile()
-  return { props: authorDetails, revalidate: 7200 }
+  return { props: authorDetails, revalidate: 60 }
 }
 
 export default function About( authorDetails ) {

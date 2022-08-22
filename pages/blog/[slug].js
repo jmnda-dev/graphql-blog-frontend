@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
     fs.writeFileSync('./public/feed.xml', rss)
   }
 
-  return { props: { post, authorDetails, prev, next }, revalidate: 7200 }
+  return { props: { post, authorDetails, prev, next }, revalidate: 60 }
 }
 
 export default function Blog({ post, authorDetails, prev, next }) {

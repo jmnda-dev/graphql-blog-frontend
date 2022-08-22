@@ -39,7 +39,7 @@ export async function getStaticProps(context) {
       initialDisplayPosts,
       pagination,
     },
-    revalidate: 7200
+    revalidate: 60
   }
 }
 
