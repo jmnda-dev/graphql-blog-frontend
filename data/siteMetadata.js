@@ -1,19 +1,18 @@
 const siteMetadata = {
   title: 'Blog',
   author: 'Jachin Manda',
-  headerTitle: 'TailwindBlog',
+  headerTitle: 'Jachin\'s Blog',
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://jmnda-blog.vercel.app',
+  siteRepo: 'https://github.com/jmnda-dev/graphql-blog-frontend',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  github: 'https://github.com',
-  twitter: 'https://twitter.com/Twitter',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  github: 'https://github.com/jmnda-dev/',
+  twitter: 'https://twitter.com/jachin_m',
+  linkedin: 'www.linkedin.com/in/jachin-manda-798408215',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
