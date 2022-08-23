@@ -1,6 +1,6 @@
 ![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
 
-# Tailwind Nextjs Starter Blog
+# GraphQL Tailwind Nextjs Starter Blog
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/stargazers/)
 [![GitHub forks](https://img.shields.io/github/forks/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/network/)
@@ -9,13 +9,37 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
-This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Probably the most feature-rich Next.js markdown blogging template out there. Comes out of the box configured with the latest technologies to make technical writing a breeze. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
+## This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blog site with data fetched from a graphql backend built with Phoenix and Absinthe.
 
-Check out the documentation below to get started.
 
-Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
+# Quick start
 
-Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
+## Installation
+
+Create a `.env.local` file in the root directory. Inside put the enviromental variable `GRAPHQL_API_ENDPOINT` and point it to your GraphQl api endpoint. For example `GRAPHQL_API_ENDPOINT=http://localhost:4000/api`
+
+
+```bash
+npm install
+```
+
+## Development
+
+First, run the development server:
+
+```bash
+npm start
+```
+
+or
+
+```bash
+npm run dev
+```
+
+
+### See below for more information about the template and examples
+
 
 ## Examples
 
@@ -135,25 +159,6 @@ npx degit https://github.com/timlrx/tailwind-nextjs-starter-blog.git
 7. Add blog posts
 8. Deploy on Vercel
 
-## Installation
-
-```bash
-npm install
-```
-
-## Development
-
-First, run the development server:
-
-```bash
-npm start
-```
-
-or
-
-```bash
-npm run dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
