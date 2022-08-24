@@ -38,8 +38,7 @@ npm run dev
 ```
 
 
-### See below for more information about the template and examples
-
+### See below for more information about the template and its original creator as well as other peoples creations using this template.
 
 ## Examples
 
