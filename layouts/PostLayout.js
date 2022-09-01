@@ -17,8 +17,8 @@ const discussUrl = (slug) =>
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev }) {
-  const { slug, title, content, tags, updatedAt} = frontMatter
-  const {firstName, lastName, profile} = authorDetails
+  const { slug, title, content, tags, updatedAt } = frontMatter
+  const { firstName, lastName, profile } = authorDetails
 
   return (
     <SectionContainer>
@@ -55,39 +55,39 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev }) {
               <dt className="sr-only">Authors</dt>
               <dd>
                 <ul className="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
-                  
-                    <li className="flex items-center space-x-2" key={`${firstName} ${lastName}`}>
-                      {profile?.avatar && (
-                        <Image
-                          src={profile.avatar}
-                          width="38px"
-                          height="38px"
-                          alt="avatar"
-                          className="h-10 w-10 rounded-full"
-                        />
-                      )}
-                      <dl className="whitespace-nowrap text-sm font-medium leading-5">
-                        <dt className="sr-only">Name</dt>
-                        <dd className="text-gray-900 dark:text-gray-100">{`${firstName} ${lastName}`}</dd>
-                        <dt className="sr-only">Twitter</dt>
-                        <dd>
-                          {profile?.twitter && (
-                            <Link
-                              href={profile.twitter}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                            >
-                              {profile.twitter.replace('https://twitter.com/', '@')}
-                            </Link>
-                          )}
-                        </dd>
-                      </dl>
-                    </li>
+
+                  <li className="flex items-center space-x-2" key={`${firstName} ${lastName}`}>
+                    {profile?.avatar && (
+                      <Image
+                        src={profile.avatar}
+                        width="38px"
+                        height="38px"
+                        alt="avatar"
+                        className="h-10 w-10 rounded-full"
+                      />
+                    )}
+                    <dl className="whitespace-nowrap text-sm font-medium leading-5">
+                      <dt className="sr-only">Name</dt>
+                      <dd className="text-gray-900 dark:text-gray-100">{`${firstName} ${lastName}`}</dd>
+                      <dt className="sr-only">Twitter</dt>
+                      <dd>
+                        {profile?.twitter && (
+                          <Link
+                            href={profile.twitter}
+                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                          >
+                            {profile.twitter.replace('https://twitter.com/', '@')}
+                          </Link>
+                        )}
+                      </dd>
+                    </dl>
+                  </li>
                 </ul>
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark" dangerouslySetInnerHTML={{__html: content}}></div>
-              
+              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark" dangerouslySetInnerHTML={{ __html: content }}></div>
+
               <Comments frontMatter={frontMatter} />
             </div>
             <footer>
@@ -99,7 +99,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev }) {
                     </h2>
                     <div className="flex flex-wrap">
                       {tags.map((tag) => (
-                        <Tag key={tag.name} text={tag.name} />
+                        <Tag key={tag.slug} text={tag.slug} />
                       ))}
                     </div>
                   </div>

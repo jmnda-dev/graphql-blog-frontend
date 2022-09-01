@@ -3,7 +3,7 @@ import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
 import generateRss from '@/lib/generate-rss'
 // import { getAllFilesFrontMatter } from '@/lib/mdx'
-import { getTagByName } from '@/lib/queries'
+import { getTagBySlug } from '@/lib/queries'
 import { getAllTags } from '@/lib/queries'
 import kebabCase from '@/lib/utils/kebabCase'
 import fs from 'fs'
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     paths: tags.map((tag) => ({
 
       params: {
-        tag: tag.name,
+        tag: tag.slug,
       },
     })),
     fallback: false,
@@ -26,7 +26,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { _tag, posts } = await getTagByName(params.tag)
+  const { _tag, posts } = await getTagBySlug(params.tag)
+  console.log("POSTS", posts)
   // const filteredPosts = allPosts.filter(
   //   (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   // )
